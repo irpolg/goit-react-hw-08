@@ -11,7 +11,7 @@ export default function Loader() {
                 wrapperClass=''
                 wrapperStyle= {{}}
                 ariaLabel='progress-bar-loading'
-                borderColor='#3577a1'
+                borderColor='#F4442E'
                 barColor='#51E5FF'
             />
         </div>
