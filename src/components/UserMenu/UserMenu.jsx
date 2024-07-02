@@ -1,17 +1,18 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
-// import css from './UserMenu.module.css';
+import { selectUser } from '../../redux/auth/selectors';
+import css from './UserMenu.module.css';
 
 const UserMenu = () => {
     const dispatch = useDispatch()
-
+    const user = useSelector(selectUser);
     const handleLogOut = () => {
         dispatch(logOut())
     }
 
     return (
-        <div className='flex'>
-            <p>Welcome, username</p>
+        <div className={css.flex}>
+            <p>Welcome, { user.name}</p>
             <button onClick={handleLogOut}>Logout</button>
             {/* <button >Logout</button> */}
         </div>

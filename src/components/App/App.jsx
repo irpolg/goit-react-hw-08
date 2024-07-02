@@ -1,37 +1,48 @@
-import { Route, Routes } from "react-router-dom";
-import AppBar from '../AppBar/AppBar';
-import { Suspense, lazy } from "react";
-import AuthNav from "../AuthNav/AuthNav";
+import { Navigate, Route, Routes } from "react-router-dom";
+// import AppBar from '../AppBar/AppBar';
+import { lazy, useEffect } from "react";
+// import AuthNav from "../AuthNav/AuthNav";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
+import { refreshUser } from "../../redux/auth/operations";
+import Loader from "../Loader/Loader";
+import { RestrictedRoute } from "../RestrictedRoute";
+import { PrivateRoute } from "../PrivateRoute";
+import { Layout } from "../Layout/Layout";
 
-const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const ContactsPage = lazy(() => import('../../pages/ContactsPage/ContactsPage'));
-const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
-const RegistrationPage = lazy(() => import('../../pages/RegistrationPage/RegistrationPage'));
+const HomePage = lazy(() => import('../../pages/HomePage'));
+const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
+const LoginPage = lazy(() => import('../../pages/LoginPage'));
+const RegistrationPage = lazy(() => import('../../pages/RegistrationPage'));
 
 const App = () => {
+    const dispatch = useDispatch();
+    const isRefreshing = useSelector(selectIsRefreshing);
+    useEffect(() => {
+dispatch(refreshUser())
+}, [dispatch])
     return (
-        <div>
-            <AppBar/>
-            <Suspense fallback={null}>
+        isRefreshing ? <Loader/ > :
+            <Layout>
                 <Routes>
                     <Route path='/' element={<HomePage />} />
-                    <Route path='auth' element={<AuthNav />}>
-                        <Route path='/login' element={<LoginPage />} />
-                        <Route path='/register' element={<RegistrationPage />} />
-                    </Route>
-                    <Route path='/contacts' element={<ContactsPage />} />
-                    <Route path='*' element={<div>404</div>}/>
+                    <Route path='/register' element={<RestrictedRoute
+                        redirectTo='/contacts'
+                        component={<RegistrationPage />} />} />
+                     <Route path='/login' element={<RestrictedRoute
+                        redirectTo='/contacts'
+                        component={<LoginPage />} />} />
+                    <Route path='/contacts' element={<PrivateRoute
+                        redirectTo='/login'
+                        component={<ContactsPage/>}
+                    />} />
+                    <Route path='*' element={<Navigate to="/" />} />    
                 </Routes>
-            </Suspense>
-        </div>
+            </Layout>
     )
 }
 
 export default App;
-
-
-
-
 
 // import css from './App.module.css';
 // import ContactList from '../ContactList/ContactList';

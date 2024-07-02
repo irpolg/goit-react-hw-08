@@ -7,7 +7,7 @@ const Navigation = () => {
 
     return (
         <nav>
-            <ul className='flex'>
+            <ul>
                 <li>
                     <Link to='/'>Home</Link>
                 </li>
