@@ -6,7 +6,7 @@ export const Layout = ({children}) => {
   return (
     <>
           <AppBar /> 
-          <Suspense fullback={<Loader/>}>
+          <Suspense fallback={<Loader/>}>
               {children}
           </Suspense>      
     </>

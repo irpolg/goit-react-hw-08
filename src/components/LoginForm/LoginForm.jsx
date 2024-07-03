@@ -17,13 +17,6 @@ const LoginForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(login(values))
-      .unwrap()
-      .then(() => {
-        console.log('login success');
-      })
-      .catch(() => {
-        console.log('login error');
-      });
     resetForm();
   };
 

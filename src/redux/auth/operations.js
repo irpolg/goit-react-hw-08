@@ -73,7 +73,7 @@ export const refreshUser = createAsyncThunk(
             //встановлюємо збережений токен авторизації
             setHeaderToken(persistedToken);
             //const { data } = await axios.post('users/refresh');
-            const { data } = await axios.get('users/refresh');
+            const { data } = await axios.get('users/current');
             return data;
 		} catch (error) {
             return thunkAPI.rejectWithValue(error.message);

@@ -20,13 +20,6 @@ const RegistrationForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     console.log('Submitting values:', values);
     dispatch(register(values))
-      .unwrap()
-      .then(() => {
-        console.log('Registration successful! Welcome!');
-      })
-      .catch(error => {
-        console.error('Registration error. Please try again.', error);
-      });
     resetForm();
   };
 
