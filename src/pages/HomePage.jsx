@@ -10,12 +10,12 @@ const styles = {
       justifyContent: 'center',
       //backgroundImage: 'linear-gradient(to bottom, #2e2f42cc, #2e2f42e6) url(${background})',
     backgroundImage: `url(${background})`,
+      // filter: 'blur(5px)',
       paddingLeft: '100px',
   },
     title: {
     fontWeight: 500,
     fontSize: 64,
-    // textDecoration: 'underline',
     textAlign: 'center',
     // transform: 'rotate(-35deg)',
     color: 'rgba(229, 229, 229, 0.8)',

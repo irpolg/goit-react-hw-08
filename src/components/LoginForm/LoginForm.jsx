@@ -56,7 +56,9 @@ const LoginForm = () => {
                 <Field className={css.field}
                     type="password"
                     name="password"
-                    id="password"/>
+                    id="password"
+                    placeholder="your_password"
+                />
                 <ErrorMessage className={css.error} name="password" component="div" />
             </div>
             

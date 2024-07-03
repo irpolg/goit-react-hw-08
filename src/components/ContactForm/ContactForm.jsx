@@ -45,13 +45,25 @@ export default function FormikForm() {
             validationSchema={validationSchema}>
             
             <Form className={css.form}>
-                <label htmlFor={nameFieldId}>Name  </label>
-                <Field type='text' name='name' id={nameFieldId} />
+                <label className={css.label} htmlFor={nameFieldId}>Name  </label>
+                <Field
+                    className={css.field}
+                    type='text'
+                    name='name'
+                    id={nameFieldId}
+                    placeholder="new_name"
+                />
                 <ErrorMessage className={css.error} name="name" component="span" />
                 <br />
 
-                <label htmlFor={numberFieldId}>Number</label>
-                <Field type='text' name='number' id={numberFieldId} />
+                <label className={css.label} htmlFor={numberFieldId}>Number</label>
+                    <Field
+                        className={css.field}
+                        type='text'
+                        name='number'
+                        id={numberFieldId}
+                        placeholder="phone_number"
+                    />
                 <ErrorMessage className={css.error} name="number" component="span" />
                 <br />
                 <button className={css.btn_add} type='submit'>Add contact</button>

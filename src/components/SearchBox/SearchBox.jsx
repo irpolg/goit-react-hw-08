@@ -11,8 +11,13 @@ export default function SearchBox() {
         const filterFieldId = useId();
         return (
             <div className={css.filterDiv}>
-            <label htmlFor={filterFieldId}>Find contacts by name</label>
+            <label
+                className={css.label_searchBox}
+                htmlFor={filterFieldId}>
+                Find contacts by name
+            </label>
             <input
+                className={css.field}
                 type="text"
                 id={filterFieldId}
                 value={filter}

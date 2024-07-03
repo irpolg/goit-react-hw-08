@@ -5,8 +5,6 @@ import { selectFilteredContacts } from '../../redux/contacts/selectors';
 
 
 export default function ContactList() {
-    // const contacts = useSelector(selectContacts)
-    // const filter = useSelector(selectNameFilter);
     const visibleContacts = useSelector(selectFilteredContacts);
     
   return (
