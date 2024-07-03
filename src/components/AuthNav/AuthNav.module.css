@@ -1,6 +1,9 @@
-.ulHome {
-    list-style-type: none;
-}
+/* .flex {
+    display: flex;
+    gap: 16px;
+    font-size: 20px;
+} */
+
 .link {
     box-shadow: 2px 2px 6px rgb(24, 21, 51);
     display: inline-block;

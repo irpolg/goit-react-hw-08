@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { register } from '../../redux/auth/operations';
 
-import style from './RegistrationForm.module.css';
+import css from './RegistrationForm.module.css';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Required'),
@@ -24,59 +24,54 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className={style.contRegLogForm}>
-      <h2 className={style.titleRegLogForm}>Register,please!</h2>
+    <div className={css.contRegLogForm}>
+      <h2 className={css.title}>Register, please!</h2>
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className={style.regLogForm} autoComplete="off">
-          <div className={style.inputGroup}>
-            <label className={style.regLoglabel} htmlFor="name">
+        <Form className={css.form} autoComplete="off">
+          <div className={css.inputGroup}>
+            <label className={css.label} htmlFor="name">
               Name
             </label>
             <Field
-              className={style.regLogInput}
-              type="text"
-              name="name"
-              id="name"
+                className={css.field}
+                type="text"
+                name="name"
+                id="name"
+                placeholder="your_name"
             />
-            <ErrorMessage className={style.error} name="name" component="div" />
+            <ErrorMessage className={css.error} name="name" component="div" />
           </div>
-          <div className={style.inputGroup}>
-            <label className={style.regLoglabel} htmlFor="email">
+          <div className={css.inputGroup}>
+            <label className={css.label} htmlFor="email">
               Email
             </label>
             <Field
-              className={style.regLogInput}
-              type="email"
-              name="email"
-              id="email"
+                className={css.field}
+                type="email"
+                name="email"
+                id="email"
+                placeholder="your_email@gmail.com"
             />
-            <ErrorMessage
-              className={style.error}
-              name="email"
-              component="div"
-            />
+            <ErrorMessage className={css.error} name="email" component="div" />
           </div>
-          <div className={style.inputGroup}>
-            <label className={style.regLoglabel} htmlFor="password">
+          <div className={css.inputGroup}>
+            <label className={css.label} htmlFor="password">
               Password
             </label>
             <Field
-              className={style.regLogInput}
-              type="password"
-              name="password"
-              id="password"
+                className={css.field}
+                type="password"
+                name="password"
+                id="password"
+                placeholder="your_password - letter & number"
             />
-            <ErrorMessage
-              className={style.error}
-              name="password"
-              component="div"
-            />
+            <ErrorMessage className={css.error} name="password" component="div" />
           </div>
-          <button className={style.regButton} type="submit">
+          <button className={css.btn} type="submit">
             Register
           </button>
         </Form>
@@ -86,49 +81,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-
-
-
-
-// import { useDispatch } from 'react-redux';
-// import { register } from '../../redux/auth/operations';
-// // import css from './RegisterForm.module.css';
-// import css from './RegistrationForm.module.css'
-
-// //export const RegisterForm = () => {
-// export const RegistrationForm =() => {
-//   const dispatch = useDispatch();
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const form = e.target;
-
-//     dispatch(
-//       register({
-//         name: form.elements.name.value,
-//         email: form.elements.email.value,
-//         password: form.elements.password.value,
-//       })
-//     );
-
-//     form.reset();
-//   };
-
-//   return (
-//     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-//       <label className={css.label}>
-//         Username
-//         <input type="text" name="name" required/>
-//       </label>
-//       <label className={css.label}>
-//         Email
-//         <input type="email" name="email" required/>
-//       </label>
-//       <label className={css.label}>
-//         Password
-//         <input type="password" name="password" minLength='6' required/>
-//       </label>
-//       <button type="submit">Register</button>
-//     </form>
-//   );
-// };

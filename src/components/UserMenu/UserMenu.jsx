@@ -12,8 +12,8 @@ const UserMenu = () => {
 
     return (
         <div className={css.flex}>
-            <p>Welcome, { user.name}</p>
-            <button onClick={handleLogOut}>Logout</button>
+            <p className={css.welcomeNameUser}>Welcome, { user.name}</p>
+            <button className={css.btnLogOut} onClick={handleLogOut}>Logout</button>
             {/* <button >Logout</button> */}
         </div>
     )

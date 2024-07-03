@@ -5,6 +5,7 @@ import css from './ContactForm.module.css';
 import * as Yup from "yup";
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
+import toast, { Toaster } from 'react-hot-toast';
 
 const validationSchema = Yup.object().shape({
   name:   Yup.string().min(2, "Too Short! Minimum - 2 ").max(50, "Too Long! Maximum - 50 ").required("Required"),
@@ -18,6 +19,7 @@ export default function FormikForm() {
     const dispatch = useDispatch();
 
     return (
+        <>
         <Formik
             initialValues={{
                 // id: "",
@@ -31,6 +33,13 @@ export default function FormikForm() {
                     number: values.number,
                 }
                 dispatch(addContact(newContact))
+                    .unwrap()
+                    .then(() => {
+                    toast.success('Contact successfully added!');
+                    })
+                    .catch(err => {
+                    toast.error(`${err.message}`);
+                    });
                 actions.resetForm()
             }}
             validationSchema={validationSchema}>
@@ -48,5 +57,7 @@ export default function FormikForm() {
                 <button className={css.btn_add} type='submit'>Add contact</button>
             </Form>
         </Formik>
+        <Toaster />
+        </>
     );
 }
